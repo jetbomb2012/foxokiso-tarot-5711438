@@ -24,6 +24,5 @@ document.addEventListener("DOMContentLoaded", function () {
     display.textContent = `你抽到的是：${result}`;
     display.style.color = "#ff6a00";
     document.body.appendChild(display);
-    
   };
 });
