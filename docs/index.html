@@ -10,6 +10,14 @@
     .purpose { margin: 20px; padding: 10px; background: #eee; border-radius: 8px; }
     button { padding: 10px 20px; font-size: 1em; }
     footer { margin-top: 30px; font-size: 0.9em; color: #666; }
+    .donate-qr-module { margin-top: 30px; text-align: center; }
+    .donate-qr-module img { width: 180px; margin: 10px 0; }
+    .donate-qr-module p { font-size: 1em; }
+
+    @media (max-width: 600px) {
+      .donate-qr-module img { width: 140px; }
+      .donate-qr-module p { font-size: 0.95em; }
+    }
   </style>
 </head>
 <body>
@@ -25,6 +33,12 @@
 
   <button onclick="drawCard()">抽一張牌</button>
   <div id="result" class="card"></div>
+
+  <div class="donate-qr-module">
+    <p>☕ 請喝星巴克 (Donate)</p>
+    <img src="assets/qr-code.png" alt="Donate QR Code">
+    <p>掃描 QR Code 支持 foxokiso-tarot 的開發與部署</p>
+  </div>
 
   <footer>
     © 2025 foxokiso-world | 測試站僅供展示與驗證
