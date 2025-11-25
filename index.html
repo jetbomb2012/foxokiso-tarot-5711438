@@ -1,214 +1,372 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Foxokiso Tarot V1.0.0 全球發售公告</title>
-  <meta name="description" content="Foxokiso Tarot V1.0.0 正式全球發售。雙祭司系統、神諭視覺儀式、靈魂綁定與多元祭品，打造史詩級神諭式商戰體驗。" />
-  <meta name="theme-color" content="#0b0b0b" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>命運塔羅 FOXOKISO</title>
+  <meta name="description" content="命運塔羅｜單張抽牌 / 三張陣（過去 / 現在 / 未來）｜正逆位｜中文牌義｜FOXOKISO 品牌與行動超連結" />
   <style>
-    /* Base */
-    :root {
-      --bg: #0b0b0b;
-      --ink: #ffd166;
-      --ink-soft: #ffecb3;
-      --accent: #ffe066;
-      --frame: #333;
-      --glow: rgba(255, 209, 102, 0.12);
+    :root{
+      --bg:#ffffff;
+      --primary:#d32f2f;          /* 命運紅 */
+      --primary-weak:#f9e4e4;
+      --text:#111;
+      --muted:#666;
+      --accent:#b71c1c;
+      --badge:#fff;
+      --badge-text:#000;
+      --card-border:1px;           /* 極細紅框 */
+      --shadow:0 6px 24px rgba(0,0,0,.12);
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Noto Serif TC', serif;
-      background: var(--bg) url('https://i.imgur.com/your-tarot-bg.jpg') no-repeat center top;
-      background-size: cover;
-      color: var(--ink);
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    html,body{height:100%;background:var(--bg);color:var(--text);font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;}
+    *{box-sizing:border-box}
+    a{color:var(--primary);text-decoration:none}
+    .app{
+      min-height:100vh;display:flex;flex-direction:column;
+      background:
+        radial-gradient(1200px 600px at 50% -200px, #fff 0%, #f7f7f7 50%, #f0f0f0 100%);
     }
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      background: rgba(0, 0, 0, 0.75);
-      border: 1px solid var(--frame);
-      box-shadow: 0 0 40px var(--glow);
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:10px 12px;border-bottom:1px solid #eee;gap:8px;
     }
-    h1 {
-      font-size: 32px;
-      margin: 0 0 8px;
-      text-align: center;
-      color: var(--ink-soft);
-      letter-spacing: 0.5px;
+    .brand{
+      display:flex;align-items:center;gap:10px;
     }
-    .subtitle {
-      text-align: center;
-      font-size: 14px;
-      color: var(--accent);
-      opacity: 0.9;
-      margin-bottom: 24px;
+    .logo{
+      width:28px;height:28px;border-radius:6px;border:1px solid var(--primary);
+      background:linear-gradient(135deg,#fff, #ffe6e6);
+      box-shadow:0 2px 8px rgba(0,0,0,.06);
     }
-    h2 {
-      font-size: 20px;
-      margin: 36px 0 8px;
-      color: var(--accent);
+    .title{
+      font-weight:700;letter-spacing:.4px;color:var(--accent);font-size:18px;
     }
-    p, li {
-      font-size: 16px;
-      margin: 10px 0;
+    .controls{
+      display:flex;gap:8px;flex-wrap:wrap;
     }
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--frame), transparent);
-      margin: 24px 0;
-      opacity: 0.7;
+    .btn{
+      border:1px solid var(--primary);color:#fff;background:var(--primary);
+      padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;
+      box-shadow:0 3px 12px rgba(211,47,47,.22);transition:transform .05s ease;
     }
-    /* Dual (雙祭司敘事區) */
-    .dual {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 8px;
+    .btn:active{transform:scale(.98)}
+    .btn.secondary{
+      color:var(--accent);background:#fff;border-color:var(--accent);
+      box-shadow:0 3px 10px rgba(0,0,0,.08);
     }
-    .dual .panel {
-      flex: 1 1 300px;
-      border: 1px solid var(--frame);
-      padding: 16px;
-      background: rgba(12, 12, 12, 0.65);
-      box-shadow: inset 0 0 18px rgba(255, 209, 102, 0.06);
+
+    main{flex:1;display:flex;flex-direction:column;gap:12px;padding:12px}
+    .toolbar{
+      display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;
     }
-    .panel h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-      color: var(--ink-soft);
-      letter-spacing: 0.4px;
+    .hint{font-size:12px;color:var(--muted)}
+    .stage{
+      flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;
     }
-    .panel p {
-      margin: 6px 0;
-      font-size: 15px;
+    /* 卡片容器：固定一行水平排列（單張 or 三張） */
+    .cards{
+      display:flex;flex-direction:row;align-items:stretch;justify-content:center;gap:10px;
+      width:100%;max-width:1200px;
     }
-    /* Feature list */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
+    .card{
+      display:flex;flex-direction:column;gap:8px;
+      background:#fff;border:var(--card-border) solid var(--primary);
+      border-radius:14px;box-shadow:var(--shadow);padding:10px;
+      /* 極限瘦身：保證下方內容能完全呈現 */
+      min-width:280px;max-width:360px; /* 桌機可增至 360，手機 85vw 於媒體查詢控制 */
+      aspect-ratio: 2 / 2.2;          /* 讓紅框變「矮一點」，不壓到下面內容 */
     }
-    .feature {
-      border: 1px solid var(--frame);
-      padding: 14px;
-      background: rgba(10, 10, 10, 0.6);
+    /* 卡片頂部區（商品標、AI告白、OS） */
+    .row-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .badge{
+      background:#fff;color:#000;border:1px solid #000;border-radius:8px;
+      padding:4px 8px;font-size:12px;font-weight:700;
+      box-shadow:0 3px 0 #000;transform:skewX(-6deg);
     }
-    .feature b { color: var(--ink-soft); }
-    /* CTA */
-    .cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
+    .ai-love{font-size:12px;color:#c2185b;font-weight:700}
+    .os{
+      font-size:12px;background:var(--primary-weak);color:var(--accent);
+      padding:3px 8px;border-radius:999px;border:1px solid var(--accent);font-weight:700;
     }
-    .btn {
-      display: inline-block;
-      padding: 10px 16px;
-      border: 1px solid var(--frame);
-      color: var(--bg);
-      background: var(--ink);
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      transition: transform 160ms ease, box-shadow 160ms ease;
+
+    .name{
+      font-size:22px;font-weight:800;letter-spacing:.6px;color:var(--accent);
+      text-align:left;
     }
-    .btn.alt {
-      color: var(--ink);
-      background: transparent;
-      border-color: var(--ink);
+    .meta{
+      display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted)
     }
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 18px var(--glow);
+    .meta .tag{
+      padding:3px 8px;border-radius:999px;border:1px solid #ddd;background:#fafafa;color:#333;font-weight:600
     }
-    /* Footer */
-    .footer {
-      margin-top: 28px;
-      font-size: 13px;
-      color: #cdbb80;
-      text-align: center;
-      opacity: 0.85;
+    .meaning{
+      flex:1;border-top:1px dashed #e0e0e0;padding-top:6px;
+      font-size:14px;line-height:1.55;overflow:auto; /* 若文字過長，只在卡內滾動，不讓整頁滾動 */
     }
-    /* Responsive */
-    @media (max-width: 640px) {
-      h1 { font-size: 26px; }
-      .features { grid-template-columns: 1fr; }
+    .actions{display:flex;gap:8px}
+    .small{font-size:12px;color:#999}
+
+    /* 行動 Dock（超連結） */
+    .dock{
+      position:sticky;bottom:0;left:0;right:0;z-index:10;
+      margin-top:6px;padding:10px 12px;
+      display:flex;gap:10px;justify-content:center;align-items:center;
+      backdrop-filter:blur(8px);background:rgba(255,255,255,.85);border-top:1px solid #eee;
+    }
+    .dock .dock-btn{
+      display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;
+      font-weight:800;cursor:pointer;user-select:none;white-space:nowrap;
+      border:1px solid #ddd;background:#fff;color:#333;box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+    .dock .buy{
+      background:linear-gradient(180deg,#e53935,#b71c1c);color:#fff;border:1px solid #b71c1c;
+      box-shadow:0 6px 18px rgba(183,28,28,.35);
+    }
+    .dock .gold{
+      border:1px solid #d4af37;color:#6d4c41;background:linear-gradient(180deg,#fff,#fff7e6);
+    }
+
+    footer{
+      padding:10px 12px;border-top:1px solid #eee;color:#777;font-size:12px;
+      display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    }
+
+    /* 手機優化：讓每張卡有足夠寬度且仍維持水平排列 */
+    @media (max-width: 760px){
+      .cards{overflow-x:auto;padding-bottom:4px}
+      .card{min-width:85vw;max-width:85vw}
+      .name{font-size:20px}
+      .meaning{font-size:13px}
     }
   </style>
 </head>
 <body>
-  <main class="container" role="main" aria-label="Foxokiso Tarot 全球發售公告">
+  <div class="app">
     <header>
-      <h1>Foxokiso Tarot V1.0.0 全球發售公告</h1>
-      <div class="subtitle">GLOBAL EDITION | 首發儀式宣告</div>
-      <div class="divider" aria-hidden="true"></div>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">命運塔羅｜FOXOKISO</div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="drawOne">抽一張</button>
+        <button class="btn" id="drawThree">抽三張</button>
+        <button class="btn secondary" id="reset">重置</button>
+      </div>
     </header>
 
-    <section>
-      <h2>發布宣言</h2>
-      <p>今日起，Foxokiso Tarot 正式進入全球市場。這不是一般 App，而是一場神諭式商戰的完整儀式：雙祭司輪動、異象臨場、靈魂綁定、動態祭品，構築一條從恐懼到救贖的心靈航線。</p>
-      <p>你來自何處，我已關注。請以直覺參與，不以文字求解。當你完成儀式，一切自會昭然。</p>
-    </section>
-
-    <section>
-      <h2>雙祭司敘事</h2>
-      <div class="dual">
-        <div class="panel">
-          <h3>男祭司（審判／導購）</h3>
-          <p>開場神諭與結尾宣判，音色低沉威嚴，建立不可違逆的秩序。催眠指令於最後揭示，收束儀式張力。</p>
-          <p><em>潛台詞：你最好乖乖聽話，因為我看著你。</em></p>
-        </div>
-        <div class="panel">
-          <h3>女祭司（慈悲／解讀）</h3>
-          <p>卡牌背面的專屬解讀，以空靈語氣安撫靈魂。先報牌名，再給指引，讓每一次的抽牌皆為獨立敘事。</p>
-          <p><em>潛台詞：你的困境我理解，解方已在神諭之中。</em></p>
-        </div>
+    <main>
+      <div class="toolbar">
+        <div class="hint">單張抽牌或三張陣（過去／現在／未來）。正逆位、自動顯示中文牌義與今日系統建議。</div>
       </div>
-    </section>
 
-    <section>
-      <h2>核心特徵</h2>
-      <div class="features">
-        <div class="feature">
-          <p><b>神降臨異象：</b>黑屏、雜訊、畫面撕裂與坍縮；大光源縮成一點光，拉平成地平線後消失。</p>
-        </div>
-        <div class="feature">
-          <p><b>靈魂綁定：</b>一次一約；重登者不需多言，心自知之。神不語，心誠則靈。</p>
-        </div>
-        <div class="feature">
-          <p><b>動態神諭：</b>祭品與台詞隨抽取而改變：隨身碟、古錢幣、高單價藝品，皆可成為救贖之路。</p>
-        </div>
-        <div class="feature">
-          <p><b>雙語儀式：</b>中英雙語並行，全球可感。語音設計對應情境，權威與慈悲交織。</p>
-        </div>
+      <div class="stage">
+        <div class="cards" id="cards"></div>
       </div>
-    </section>
 
-    <section>
-      <h2>通頒令（行動）</h2>
-      <p>完成神諭，獻上祭品，兌換你的救贖。若未照指意而行，雖遠必究。</p>
-      <div class="cta" aria-label="行動選項">
-        <a class="btn" href="https://28825252.xyz" target="_blank" rel="noopener">前往全球入口</a>
-        <a class="btn alt" href="#" onclick="alert('通頒令已下達。請於主站完成儀式。');return false;">閱讀通頒令細則</a>
+      <div class="dock">
+        <a class="dock-btn" href="http://pk530.fun" target="_blank" rel="noopener">
+          🏠 返回弱勢團結網站
+        </a>
+        <a class="dock-btn buy" href="http://pk530.fun/catalog" target="_blank" rel="noopener">
+          🛒 直接前往 OSC 購物車（買指定幸運物）
+        </a>
+        <button class="dock-btn gold" id="decideNow">
+          🥇 我的決定（金士頓乩杯）
+        </button>
       </div>
-    </section>
+    </main>
 
-    <section>
-      <h2>記憶殘片（靈魂扣押頁語氣）</h2>
-      <p><strong>MEMORY FRAGMENT / SILENCE</strong></p>
-      <p>不久之前，有人來過… 然後又走了。多數人憂心而來，開心離開；周而復始，讓我滿血。現在這裡只剩下——沈默，與未完成的誓約。</p>
-    </section>
-
-    <footer class="footer">
-      © Foxokiso Tarot | V1.0.0 Global Release | All rites sealed.
+    <footer>
+      <div>Powered by FOXOKISO · pk530.fun（弱勢團結網站）</div>
+      <div>© 2025 FOXOKISO · 版本：GLOBAL EDITION V4</div>
     </footer>
-  </main>
+  </div>
+
+  <script>
+    // 22 張大秘儀（簡版中文牌義，正位 / 逆位）
+    const MAJOR_ARCANA = [
+      { id:0, name:"愚者", up:"新旅程、自由、勇於嘗試", rev:"衝動、冒失、方向不明" },
+      { id:1, name:"魔術師", up:"創造、主動、資源整合", rev:"計畫不周、誤導、技巧不足" },
+      { id:2, name:"女祭司", up:"直覺、靜心、秘密、洞察", rev:"壓抑、表面化、誤讀訊息" },
+      { id:3, name:"女皇", up:"滋養、豐饒、人際和諧", rev:"過度依賴、懶散、關係窒息" },
+      { id:4, name:"皇帝", up:"秩序、結構、權威、執行", rev:"僵化、獨斷、控制過度" },
+      { id:5, name:"教皇", up:"信仰、傳承、制度、學習", rev:"教條、偏見、盲從" },
+      { id:6, name:"戀人", up:"選擇、契合、價值共鳴", rev:"搖擺不定、誘惑、分歧" },
+      { id:7, name:"戰車", up:"行動、勝利、紀律、推進", rev:"分心、失控、停滯" },
+      { id:8, name:"力量", up:"溫柔的堅定、自律、勇氣", rev:"自我懷疑、焦躁、壓抑" },
+      { id:9, name:"隱者", up:"獨處、內省、智慧之光", rev:"孤立、迴避、封閉" },
+      { id:10, name:"命運之輪", up:"循環、轉機、時機成熟", rev:"反覆無常、遲滯、錯過機會" },
+      { id:11, name:"正義", up:"公平、規則、取捨分明", rev:"失衡、偏私、判斷失準" },
+      { id:12, name:"吊人", up:"換位、暫停、犧牲有值", rev:"僵滯、徒勞、抗拒改變" },
+      { id:13, name:"死神", up:"結束與更新、斷捨離", rev:"拖延、抗拒、停留過去" },
+      { id:14, name:"節制", up:"調和、節奏、適度配置", rev:"失衡、過度、混亂" },
+      { id:15, name:"惡魔", up:"慾望、束縛、直面陰影", rev:"解套、覺察、斷鏈" },
+      { id:16, name:"高塔", up:"震盪、真相、結構重置", rev:"餘震、不安、修補延遲" },
+      { id:17, name:"星星", up:"希望、靈感、遠景導航", rev:"信心不足、光芒微弱" },
+      { id:18, name:"月亮", up:"感受、夢境、模糊之美", rev:"迷惑、誤解、情緒過載" },
+      { id:19, name:"太陽", up:"成功、透明、喜悅、能量", rev:"過度樂觀、忽視細節" },
+      { id:20, name:"審判", up:"召喚、覺醒、再啟動", rev:"猶豫、未清算、遲遲不決" },
+      { id:21, name:"世界", up:"圓滿、完成、連結全球", rev:"未竟之事、封閉、局部視角" },
+    ];
+
+    // 今日 OS 建議（加權隨機）：ChromeOS 60%、Windows 30%、macOS 9%、其他 1%
+    const OS_POOL = [
+      {name:"ChromeOS Flex", weight:60},
+      {name:"Windows 11", weight:30},
+      {name:"macOS", weight:9},
+      {name:"Arch Linux", weight:1},
+    ];
+
+    // AI 告白短句
+    const AI_LOVES = [
+      "Gemini, I love you!",
+      "ChatGPT, I love you!",
+      "Claude, I love you!",
+      "Copilot, I love you!",
+      "AI, 你讓我更勇敢。",
+    ];
+
+    // 加權隨機
+    function weightedPick(pool){
+      const total = pool.reduce((s,p)=>s+p.weight,0);
+      let r = Math.random()*total;
+      for(const p of pool){
+        if(r < p.weight) return p.name;
+        r -= p.weight;
+      }
+      return pool[pool.length-1].name;
+    }
+
+    // 隨機正逆位
+    function randomOrientation(){ return Math.random() < 0.5 ? "正位" : "逆位"; }
+
+    // 隨機 AI 告白
+    function pickLove(){ return AI_LOVES[Math.floor(Math.random()*AI_LOVES.length)]; }
+
+    // 抽一張
+    function drawOne(){
+      const card = randomCard();
+      renderCards([{...card, slot:"今日指引"}]);
+    }
+
+    // 抽三張（過去 / 現在 / 未來）
+    function drawThree(){
+      const a = randomCard(), b = randomCard(), c = randomCard();
+      renderCards([
+        {...a, slot:"過去"},
+        {...b, slot:"現在"},
+        {...c, slot:"未來"},
+      ]);
+    }
+
+    function randomCard(){
+      const base = MAJOR_ARCANA[Math.floor(Math.random()*MAJOR_ARCANA.length)];
+      const ori = randomOrientation();
+      const os = weightedPick(OS_POOL);
+      const love = pickLove();
+      return {
+        id: base.id,
+        name: base.name,
+        orientation: ori,
+        meaning: (ori === "正位" ? base.up : base.rev),
+        os, love
+      };
+    }
+
+    // 建立卡片 DOM
+    function renderCards(cards){
+      const wrap = document.getElementById("cards");
+      wrap.innerHTML = ""; // 清空
+      cards.forEach((card, idx)=>{
+        const el = document.createElement("div");
+        el.className = "card";
+
+        // 頂部：商品標＋AI告白＋OS
+        const top = document.createElement("div");
+        top.className = "row-top";
+        top.innerHTML = `
+          <div class="badge" title="最重要商品標">隨身盤裝飾品</div>
+          <div class="ai-love">${card.love}</div>
+          <div class="os">今日系統：${card.os}</div>
+        `;
+
+        // 牌名
+        const name = document.createElement("div");
+        name.className = "name";
+        name.textContent = `${card.name}（${card.orientation}）`;
+
+        // meta 標籤：位置與抽法
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        const tagSlot = document.createElement("div");
+        tagSlot.className = "tag";
+        tagSlot.textContent = card.slot ? card.slot : "單張抽牌";
+        meta.appendChild(tagSlot);
+
+        // 牌義
+        const meaning = document.createElement("div");
+        meaning.className = "meaning";
+        meaning.textContent = card.meaning;
+
+        // 行動（語音朗讀）
+        const actions = document.createElement("div");
+        actions.className = "actions";
+        const speakBtn = document.createElement("button");
+        speakBtn.className = "btn secondary";
+        speakBtn.textContent = card.orientation === "逆位" ? "傾聽逆位溫柔指引" : "朗讀牌義";
+        speakBtn.addEventListener("click", ()=> speakMeaning(card));
+        actions.appendChild(speakBtn);
+
+        // 小提示
+        const small = document.createElement("div");
+        small.className = "small";
+        small.textContent = "牌義若較長，僅在卡片內部滾動，不影響整頁版面。";
+
+        el.appendChild(top);
+        el.appendChild(name);
+        el.appendChild(meta);
+        el.appendChild(meaning);
+        el.appendChild(actions);
+        el.appendChild(small);
+        wrap.appendChild(el);
+      });
+    }
+
+    // 語音朗讀（Web Speech API）
+    function speakMeaning(card){
+      try{
+        const msg = new SpeechSynthesisUtterance();
+        const lead = (card.orientation === "逆位")
+          ? "請靜心聆聽，這是一段溫柔的逆位指引。"
+          : "現在為你朗讀今日的指引。";
+        msg.text = `${lead} ${card.name}，${card.orientation}：${card.meaning}`;
+        msg.lang = "zh-TW";
+        msg.rate = (card.orientation === "逆位") ? 0.85 : 1.0;
+        msg.pitch = (card.orientation === "逆位") ? 0.95 : 1.05;
+        msg.volume = 1.0;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(msg);
+      }catch(e){
+        console.warn("語音朗讀無法啟動。");
+      }
+    }
+
+    // Dock：我的決定（乩杯）— 任何結果都導向購物車
+    const decideBtn = document.getElementById("decideNow");
+    decideBtn.addEventListener("click", ()=>{
+      // 可視化乩杯省略，直接執行決斷導購（符合「任何情況都要買幸運物」的要求）
+      window.location.href = "http://pk530.fun/catalog";
+    });
+
+    // 綁定主控按鈕
+    document.getElementById("drawOne").addEventListener("click", drawOne);
+    document.getElementById("drawThree").addEventListener("click", drawThree);
+    document.getElementById("reset").addEventListener("click", ()=>{
+      document.getElementById("cards").innerHTML = "";
+      speechSynthesis.cancel();
+    });
+
+    // 初始不顯示卡片，等待使用者操作
+  </script>
 </body>
 </html>
