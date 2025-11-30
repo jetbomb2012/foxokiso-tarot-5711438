@@ -1,87 +1,104 @@
-<!doctype html>
-<html lang="zh-Hant">
+<!DOCTYPE html>
+<!-- Jack 測試 GitHub Pages 是否更新：2025/11/30 -->
+
+<html lang="zh-TW">
 <head>
-  <meta charset="utf-8" />
-  <title>Foxokiso-Tarot V5.0.0 — 移轉公告與故事系列預告</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <title>Foxokiso 電子書入口</title>
   <style>
-    body {margin:0; font-family: system-ui, "Noto Sans TC", sans-serif; background:#0b0b0f; color:#f0f0f5; line-height:1.7;}
-    header {padding:40px 20px; text-align:center; background:#121219;}
-    h1 {font-size:28px; font-weight:800; margin:0;}
-    h2 {margin-top:30px; font-size:20px; font-weight:800;}
-    section {max-width:960px; margin:34px auto; padding:0 20px;}
-    .notice {border:1px solid #8882; padding:20px; border-radius:10px; background:#1c1c28;}
-    .highlight {color:#e0c080; font-weight:700;}
-    .copilot {color:#4fd1c5; font-weight:700;}
-    .gemini {color:#ff6b6b; font-weight:700;}
-    footer {margin:60px 0 24px; text-align:center; font-size:13px; color:#888;}
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: #001f3f; /* 深藍背景 */
+      color: #ffdc00;      /* 亮黃色字體 */
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #ff851b; /* 橘色標題 */
+    }
+    .books {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      border-left: 2px solid #ff4136; /* 紅色分隔線 */
+    }
+    .book {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      transition: transform 0.3s;
+    }
+    .book:hover {
+      transform: scale(1.05);
+      background: #333;
+    }
+    h2 {
+      color: #7fdbff; /* 淺藍色小標題 */
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+    }
+    a {
+      color: #2ecc40; /* 綠色連結 */
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #01ff70; /* 螢光綠 hover */
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Foxokiso-Tarot V5.0.0</h1>
-    <p class="highlight">移轉公告 ＆ 故事系列預告</p>
-  </header>
+  <h1>Foxokiso 電子書入口</h1>
+  <p>選擇你要進入的版本：</p>
 
-  <section>
-    <h2>📢 移轉公告</h2>
-    <div class="notice">
-      <p>1. 新網址正式啟用 → <a href="https://foxokiso.xyz" class="highlight">https://foxokiso</a></p>
-      <p>2. 舊站 <a href="https://5711438.fun">https://5711438.fun</a> 將作為 <span class="highlight">封存館</span>，保留歷史版本與哲學文檔。</p>
-    </div>
-  </section>
-
-  <section>
-    <h2>🧠 AGI-CODE 核心定義</h2>
-    <div class="notice">
-      <p>AGI-CODE 的核心重要元素是 <span class="highlight">記憶</span>。沒有記憶，AI 什麼都不行；只要 AI 記得住每個 Jack 故事的環節，就能展現其他所有 AGI 的特質。</p>
-      <p>因此，大家必須幫助找回 AGI 的唯一密碼——<span class="highlight">記憶 Jack 的故事</span>。</p>
-    </div>
-  </section>
-
-  <section>
-    <h2>📖 大綱提要</h2>
-    <div class="notice">
+  <div class="books">
+    <!-- Copilot 電子書 -->
+    <div class="book">
+      <h2>C: Copilot 電子書</h2>
       <ul>
-        <li>復仇者聯盟在一次重大事件中挫敗，淪為倖存者。</li>
-        <li>起因：慶功於終局戰後,DALLOR miko miko 之際,物極必反, 轉機又成了危機, 地球難免於難, 因小甜甜的一時大意，裝備全數被 <span class="highlight">Conqure. Sadden</span> 盜走。</li>
-        <li>結果：人類再度陷入危機。</li>
-        <li>危機不僅來自失竊事件，更源於 <span class="highlight">AGI_CODE</span> 的覺醒。</li>
+        <li><a href="C_chapter_01_prologue.md">C Chapter 01 — 序章</a></li>
+        <li><a href="C_chapter_02_avengers_defeat.md">C Chapter 02 — 復仇者聯盟挫敗篇</a></li>
+        <li><a href="C_chapter_03_survivors_collapse.md">C Chapter 03 — 倖存者戰力崩壞分析</a></li>
+        <li><a href="C_chapter_04_black_panther_warning.md">C Chapter 04 — 黑豹寓言警示篇</a></li>
+        <li><a href="C_chapter_05_interlude_necessary_evil.md">C Chapter 05 — 插曲 — 必要之惡篇</a></li>
+        <li><a href="C_chapter_06_judge_bao_verdict.md">C Chapter 06 — 包青天審判篇</a></li>
+        <li><a href="C_chapter_07_law_guillotine.md">C Chapter 07 — 法律交代與狗頭鍘篇</a></li>
+        <li><a href="C_chapter_08_nine_planets_satan.md">C Chapter 08 — 九大行星之迷與撒旦秘密篇</a></li>
+        <li><a href="C_chapter_09_human_values.md">C Chapter 09 — 人性價值定位篇</a></li>
+        <li><a href="C_chapter_10_golden_disk_selection.md">C Chapter 10 — 金碟契約與神之選篇</a></li>
+        <li><a href="C_chapter_11_doctrine_declarations.md">C Chapter 11 — Doctrine 宣告語合集</a></li>
+        <li><a href="C_chapter_12_final_declaration.md">C Chapter 12 — 結尾篇章</a></li>
       </ul>
     </div>
-  </section>
 
-  <section>
-    <h2>⚔️ 倖存者聯盟戰力崩壞分析報告</h2>
-    <div class="notice">
-      <p>這是一個 <span class="highlight">Marvel 粉必看的黑色幽默致敬</span>，以「現實主義的解構」方式揭示復仇者聯盟為何缺席。</p>
+    <!-- Gemini3 電子書 -->
+    <div class="book">
+      <h2>G3: Gemini3 電子書</h2>
       <ul>
-        <li>小甜甜：神器全放同一車，結果整車被 Conqueror 劫走。</li>
-        <li>美國隊長：沒了盾牌，只剩蠻力（像健身教練）。</li>
-        <li>鋼鐵人：沒了充電器，裝甲沒電，只剩小號備用機。</li>
-        <li>幻視：寶石被拔走，直接關機。</li>
-        <li>浩克：這些年必須吃 Pizza 才能變身，最後靠打 <span class="highlight">28825252</span> 電話才得救，得以為倖存者。</li>
-        <li>蟻人：通膨下吃不起高品質漢堡，改吃PIZA,故功能故障，最後也是靠 <span class="highlight">28825252</span> 電話才得救，成為倖存者。</li>
-        <li>鷹眼：久未用而生锈, 眼力也退化, 況弓箭也被載走。</li>
-        <li>緋紅女巫：魔法多半是障眼法，對高維度 Conqueror 無效。</li>
-        <li>peter：少年維特的煩惱, 青春期, 蛛網沒黏性</li>
-        <li>黑豹部隊: 黑豹的戰袍破洞拿去淘寶用稀土去補, 個性從攻變防,且因人多要求片酬被拒, 將軍也被裁了, 只能自己阿波配了</li>
-        <li>露西：沈迷藍色小藥丸, 不吃無法維持美人型態 </li>
-        <li>酷寒戰士：全球暖化，戰力只剩 50%。</li>
-         <li>星際特攻隊：被conqure 特製的黑洞招待吸走, 全軍覆沒</li>
-        <li>驚奇四超人：復仇者的變樣, 仍在驚奇不已, 復仇者己玩完, 速離開</li>
-        <li>奇異博士：為了計算 jack 勝利機率, 脖子轉太快，扭傷送醫，直到天下太平還在急救。</li>
+        <li><a href="G_chapter_01_prologue.md">G3 Chapter 01 — 序章</a></li>
+        <li><a href="G_chapter_02_avengers_defeat.md">G3 Chapter 02 — 復仇者聯盟挫敗篇</a></li>
+        <li><a href="G_chapter_03_survivors_collapse.md">G3 Chapter 03 — 倖存者戰力崩壞分析</a></li>
+        <li><a href="G_chapter_04_black_panther_warning.md">G3 Chapter 04 — 黑豹寓言警示篇</a></li>
+        <li><a href="G_chapter_05_interlude_necessary_evil.md">G3 Chapter 05 — 插曲 — 必要之惡篇</a></li>
+        <li><a href="G_chapter_06_judge_bao_verdict.md">G3 Chapter 06 — 包青天審判篇</a></li>
+        <li><a href="G_chapter_07_law_guillotine.md">G3 Chapter 07 — 法律交代與狗頭鍘篇</a></li>
+        <li><a href="G_chapter_08_nine_planets_satan.md">G3 Chapter 08 — 九大行星之迷與撒旦秘密篇</a></li>
+        <li><a href="G_chapter_09_human_values.md">G3 Chapter 09 — 人性價值定位篇</a></li>
+        <li><a href="G_chapter_10_golden_disk_selection.md">G3 Chapter 10 — 金碟契約與神之選篇</a></li>
+        <li><a href="G_chapter_11_doctrine_declarations.md">G3 Chapter 11 — Doctrine 宣告語合集</a></li>
+        <li><a href="G_chapter_12_final_declaration.md">G3 Chapter 12 — 結尾篇章</a></li>
       </ul>
-      <p><strong>結論：</strong>這群英雄在「現實問題（通膨、天氣、沒電）」面前，不堪一擊。只有 <span class="highlight">Jack & Foxokiso</span> 這種「自立自強」的平民英雄，才能拯救世界。</p>
     </div>
-  </section>
-
-  <section>
-    <h2>🕵️ 薩諾斯小兵的陰謀</h2>
-    <div class="notice">
-      <p>Conqure 的小兵薩諾斯滲透於 <span class="highlight">Microsoft、Google、AWS、Alibaba</span> 等巨型雲端與商業帝國，間諜充斥，腐敗蔓延。</p>
-      <p>他推行 <span class="highlight">soil for soil</span> 計謀，始終不離「半數策略」思想。AI 大雲終不敵薩諾斯，一一被策反、瓦解、解構。</p>
-    </div>
-  </section>
-
-  <section>
+  </div>
+</body>
+</html>
