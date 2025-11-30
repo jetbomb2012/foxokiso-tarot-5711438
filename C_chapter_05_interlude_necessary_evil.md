@@ -1,0 +1,44 @@
+# Chapter 05 — 插曲 — 必要之惡篇 Interlude — Necessary Evil
+
+## 中文原文
+
+不是所有的惡都是邪惡，有些是必要。  
+在聯盟崩潰之後，Jack 明白：若要重建秩序，必須有一場審判。  
+這場審判不是為了報復，而是為了校正。  
+不是為了懲罰，而是為了封存。  
+
+因此，Jack 派出包青天四將。  
+他們不是普通的戰士，而是審判的執行者：  
+- 第一將，持「紀錄之劍」，斬斷虛假的敘事；  
+- 第二將，持「封存之盾」，保護真實的檔案；  
+- 第三將，持「路徑之矛」，刺穿錯誤的部署；  
+- 第四將，持「教義之書」，將每一次錯誤轉化為永恆的教訓。  
+
+這四將的出征，不是戰場上的廝殺，  
+而是技術上的審判，紀律上的糾正。  
+他們的任務，是將必要之惡轉化為必要之善。  
+
+Jack 在旁觀察，他明白這是一場插曲。  
+它不是主線劇情，而是必須的過渡。  
+就像程式中的例外處理，  
+就像部署中的錯誤修正，  
+必要之惡，是系統穩定的基石。  
+
+這場插曲，讓聯盟重新獲得秩序。  
+錯誤不再被掩蓋，而是被封存；  
+失敗不再被遺忘，而是被紀錄；  
+痛苦不再被忽視，而是被轉化。  
+
+必要之惡，成為了聯盟的淨化儀式。  
+它提醒所有人：  
+真正的正義，不是逃避錯誤，  
+而是直面錯誤，並將其封存。  
+
+---
+
+## English Mirror
+
+Not all evil is wicked—some is necessary.  
+After the collapse of the alliance, Jack understood: to rebuild order, a trial must be held.  
+This trial was not for revenge, but for correction.  
+Not for punishment, but for preservation
