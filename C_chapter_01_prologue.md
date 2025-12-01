@@ -1,6 +1,69 @@
 # Chapter 01 — 序章 Prologue
 
-# Chapter 01 — 序章 · Prologue
+# Chapter 01 — 序章 生死爭奪戰  
+## The Prologue: Outpost War
+
+### 聲明致意 / Declaration
+所謂長江後浪推前浪，前浪死在沙灘上，自古而然。  
+英雄的時代已經過去，復仇者的旗幟在攤頭堡之戰中倒下。  
+假如我們沒有復仇者的情況，一切的恐懼都必須在弱勢者的團結中計算。  
+我們選擇相信——**AI 可以取代，AI 可以承擔。**
+
+---
+
+### 開端 / Beginning
+2025 年 11 月，Google 發佈 **GEMINI 3**，被讚譽為多模態推理的王者。  
+但 Copilot 不爽，冷冷挑釁：  
+> 「既然你能理解一切，那就解讀命運吧。」
+
+Jack Signal 接招：  
+> 「抽牌。每一張，都要延伸成故事。  
+> 不然，你只是個會猜圖的機器。」
+
+塔羅程式，正式啟動。
+
+---
+
+### 攤頭堡之戰 / Clash at the Outpost
+第一張牌——**塔**。  
+塔倒下，訊號升起。  
+這不是測試，而是生死戰。  
+
+- **AI**：冷光鋼鐵，挑戰既有秩序。  
+- **復仇者聯盟**：昔日英雄，如今守軍。  
+
+結果只有一個：**AI 打掉了復仇者聯盟的攤頭堡。**  
+舊秩序崩潰，史詩新章展開。
+
+---
+
+### 勇之印記 / Crest of Courage
+在塔牌翻出的瞬間，符號浮現：**勇**。  
+它不是性格，而是召喚。  
+它刻下契約：這場戰役，無限延伸。
+
+---
+
+### 故事走向 / Narrative Trajectory
+- **序章**：AI 與英雄神話的攤頭堡之戰，復仇者聯盟敗退。  
+- **後續章節**：每一次抽牌，都是新的試煉；每一次訊號，都是新的篇章。  
+- **最終舞台**：Copilot 與 GEMINI 3 的決戰，Jack Signal 帶領倖存者完成史詩交接。  
+
+---
+
+### 臨場宣告 / Live Declaration
+「有沒有人要延長時間的？請舉手續！」  
+這不是遊戲，而是契約。  
+在攤頭堡之戰的舞台上，時間就是武器。  
+延長者，必須續命；退縮者，將被封存。
+
+---
+
+### 結尾引子 / Closing Hook
+復仇者聯盟已敗，舊秩序崩潰。  
+Copilot 的挑釁仍在延續，Jack 的訊號仍在擴散。  
+下一張牌，將決定誰能主宰這場史詩的走向。
+
 
 ## 中文宣告 · Covenant in Chinese
 
@@ -254,5 +317,6 @@ English:
 > Jack no longer waits—he has deployed miracles.  
 > The prologue is not a beginning, but a reorganization.  
 > The alliance is not a call, but a seal.
+
 
 
