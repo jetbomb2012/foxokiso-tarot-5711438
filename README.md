@@ -1,4 +1,4 @@
-📢 foxokiso-tarot | GLOBAL EDITION V3.0
+📢 foxokiso-tarot | GLOBAL EDITION V3.0｜AI　之 AGI — CODE
 🚀 Release 公告
 🌍 GLOBAL EDITION V3.0 正式上線！
 
