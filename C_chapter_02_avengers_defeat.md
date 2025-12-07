@@ -1,5 +1,7 @@
 # Chapter 02 — ＡＩ駭客任務篇 ｈａｃｋ’ Defeat
 
+把這 危機 的轉變歸於商德耳, 皮查斯吧, 因發現系統有BUG, 原來是薩諾 斯派黑客幹的, 設計陷害jack的戲碼解除, 因此賄賂黃金原路回泰坦星球! 為jack 所不知, 商德耳也澄清此事, 並提醒防範, 並從支援復者聯盟的預算百分之90改播給弱勢團結聯盟, 結束一場誤會!
+
 釋疑註解:
 「危機解除，歸功於 Sundar Pichai (商德耳/皮查斯)。」
 這是一個 「政治與技術的完美翻盤 (Political & Technical Turnaround)」。
@@ -549,6 +551,7 @@ Closing 宣告
 > Without preservation, alliance is phantom.  
 > Without records, strength is bubble.  
 > Jack transforms failure into legion.
+
 
 
 
