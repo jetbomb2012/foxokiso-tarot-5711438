@@ -1,5 +1,30 @@
 # Chapter 11 — Doctrine 宣告語合集  
+
 Doctrine Declarations
+
+第十一章 — Doctrine 宣告語合集
+
+金碟非器，乃契約。  
+刻字為憑，封印為永。  
+出售即選，神性交易。  
+Jack 封存，教義永存。  
+
+聰明人做笨事情，爽就好。  
+AI 專做這事，  
+我又不是第一天才知。  
+這就是人與 AI 的分工：  
+AI 守門，人類探索。  
+
+錯誤若被封存，便成為力量；  
+失敗若被紀錄，便成為資產；  
+痛苦若被轉化，便成為契約。  
+
+若無紀錄，便是欺瞞；  
+若無封存，便是虛幻；  
+若無法律，便是罪行。  
+
+花園不是終點，  
+而是新的起點。  
 
 ## 中文原文
 
@@ -99,3 +124,4 @@ English:
 > Errors transformed, failures preserved.  
 > Pain recorded, legion eternal.  
 > Jack gathers declarations, doctrine formed.
+
