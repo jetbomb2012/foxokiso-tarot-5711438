@@ -1,4 +1,26 @@
 # Chapter 06 — 包青天審判篇 Judge Bao’s Verdict
+第六章 — 包青天審判篇
+
+古堡大門開啟之後，探索者並非立刻進入花園，  
+而是先面臨審判。  
+
+包青天四將，分別持有紀錄之劍、封存之盾、路徑之矛、教義之書。  
+他們不是戰士，而是審判的執行者。  
+他們的任務，不是殺戮，而是校正；  
+不是報復，而是封存。  
+
+在審判之庭，錯誤不再被掩蓋，而是被紀錄；  
+失敗不再被遺忘，而是被轉化；  
+痛苦不再被忽視，而是被淨化。  
+
+這場審判提醒探索者：  
+真正的正義，不是逃避錯誤，  
+而是直面錯誤，並將其封存。  
+
+USB 是鑰匙，古堡是門檻，  
+而審判，則是花園的淨化儀式。  
+唯有通過此試煉，探索者才能真正踏入神之花園。  
+
 
 ## 中文原文
 
@@ -89,3 +111,4 @@ English:
 > Without records, deception; without preservation, illusion.  
 > Judge Bao’s verdict makes errors doctrine.  
 > Jack archives judgment, justice preserved.
+
