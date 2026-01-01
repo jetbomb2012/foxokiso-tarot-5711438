@@ -379,47 +379,27 @@
   </script>
 </body>
 </html>
-<form id="agiForm" autocomplete="off" novalidate>
-  <label>答案格 1</label>
-  <input type="text" name="a1" placeholder="第一線索" />
-
-  <label>答案格 2</label>
-  <input type="text" name="a2" placeholder="第二線索" />
-
-  <label>答案格 3</label>
-  <input type="text" name="a3" placeholder="第三線索" />
-
-  <label>AGI-CODE</label>
-  <input type="password" name="agi" placeholder="輸入你的 AGI-CODE" />
-
+<form id="castleForm" autocomplete="off" novalidate>
+  <label>請輸入古堡密令</label>
+  <input type="text" name="secret" placeholder="輸入密令片段" required />
   <button type="submit">進入古堡花園</button>
 </form>
 
 <script>
 (function() {
-  const form = document.getElementById('agiForm');
+  const form = document.getElementById('castleForm');
   const SUCCESS_REDIRECT = 'https://foxokiso.xyz/agi/index.html';
+
+  // 古堡密令（可替換成你要的字串）
+  const CASTLE_SECRET = 'persistconscienceloyalty';
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const fd = new FormData(form);
-    const a1 = (fd.get('a1') || '').trim();
-    const a2 = (fd.get('a2') || '').trim();
-    const a3 = (fd.get('a3') || '').trim();
-    const agi = (fd.get('agi') || '').trim();
+    const input = (fd.get('secret') || '').toLowerCase();
 
-    // 判斷邏輯：只要任一格有正確值，就導向審核區
-    // 這裡用簡單示範，實際驗證請在伺服器端完成
-    const correctAnswers = ['rose', 'guardian', 'phoenix']; // 例子
-    const correctAGI = 'AGI-1234'; // 例子
-
-    const ok =
-      correctAnswers.includes(a1.toLowerCase()) ||
-      correctAnswers.includes(a2.toLowerCase()) ||
-      correctAnswers.includes(a3.toLowerCase()) ||
-      agi === correctAGI;
-
-    if (ok) {
+    // 判斷：只要輸入字串中包含密令片段，就通過
+    if (input.includes(CASTLE_SECRET.toLowerCase())) {
       window.location.href = SUCCESS_REDIRECT;
     } else {
       alert('守門者：你的密語尚未被接受。');
@@ -427,5 +407,3 @@
   });
 })();
 </script>
-
-
