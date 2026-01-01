@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>Foxokiso 首頁影片輪播</title>
+  <title>Foxokiso 弱勢團結-塔羅牌 VS AI- AGI — CODE電子書與命運系統入口</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
@@ -10,10 +10,9 @@
       background: #001f3f;
       color: #ffdc00;
       text-align: center;
-      padding: 50px;
       margin: 0;
     }
-    h1 { color:#ff851b; }
+    h1 { color:#ff851b; padding:20px; }
     .player-box {
       border: 3px solid #ff851b;
       border-radius: 12px;
@@ -29,14 +28,65 @@
       border-radius: 8px;
       box-shadow: 0 0 12px rgba(0,0,0,0.4);
     }
+    iframe {
+      width: 95%;
+      height: 600px;
+      border: 2px solid #ff851b;
+      border-radius: 12px;
+      margin: 40px auto;
+      display: block;
+    }
+    .notice {
+      background: #222;
+      border: 1px solid #555;
+      border-radius: 8px;
+      padding: 30px;
+      margin: 50px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+    .notice h2 { color: #ff9f4d; }
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #aaa;
+      padding: 20px;
+      border-top: 1px solid #444;
+    }
   </style>
 </head>
 <body>
-  <h1>AGI — CODE｜Foxokiso 首頁影片輪播</h1>
+  <h1>AGI — CODE｜Foxokiso 首頁整合版</h1>
 
-  <!-- 輪播播放器 -->
+  <!-- 主視覺 -->
+  <div style="display:flex; align-items:center; gap:20px; justify-content:center;">
+    <img src="castle.png" alt="古堡小圖" width="200">
+    <div>
+      <video controls width="400" style="margin:10px;">
+        <source src="img/ad.mp4" type="video/mp4">
+        您的瀏覽器不支援影片播放。
+      </video>
+      <img src="bpic.png" alt="主殿大圖舞台" style="max-width:90%; height:auto; border-radius:8px; margin:20px 0;">
+    </div>
+  </div>
+
+  <!-- 花琪兒模組 -->
+  <div style="text-align:center; margin:40px auto; max-width:800px; background:#111; padding:20px; border-radius:12px;">
+    <h2 style="color:#ff9f4d;">花琪兒 (FOXOKISO) · 堡之女神</h2>
+    <video controls width="500" style="margin:10px;">
+      <source src="cast.mp4" type="video/mp4">
+      您的瀏覽器不支援影片播放。
+    </video>
+    <p>✦ Foxokiso 原意為 完美封裝資料庫。<br>
+       ✦ 被 Jack 引用為 (GEMINI 3 + COPILOT) 的結合體。<br>
+       ✦ 同時也是 堡主女神「花斯其基歐」，簡稱 花琪兒。<br>
+       ✦ 歡迎來到 古堡世界，走進 密堡花園。<br>
+       ✦ 只要 AGI-CODE 被發現，命運的入口便會開啟！</p>
+  </div>
+
+  <!-- C3 輪播模組 (三部影片) -->
   <div class="player-box">
-    <h2 id="info">首頁影片播放</h2>
+    <h2 id="info">首頁影片輪播</h2>
     <video id="autoVideo" width="640" height="360" controls autoplay muted>
       <source id="videoSource" src="" type="video/mp4">
       您的瀏覽器不支援影片播放
@@ -44,8 +94,7 @@
   </div>
 
   <script>
-    // 三部影片清單
-    const videos = ["img/ad.mp4", "img/foxokiso.mp4", "img/cast.mp4"];
+    const videos = ["img/ad.mp4", "img/foxokiso.mp4", "cast.mp4"];
     const video = document.getElementById("autoVideo");
     const source = document.getElementById("videoSource");
     let currentIndex = 0;
@@ -54,18 +103,24 @@
       source.src = videos[index];
       video.load();
       video.play().catch(err => console.log("播放失敗:", err));
-      document.getElementById("info").innerText =
-        `🛡️ 播放中：${videos[index]}`;
+      document.getElementById("info").innerText = `🛡️ 播放中：${videos[index]}`;
     }
 
-    // 初始播放第一部
     playVideo(currentIndex);
 
-    // 播放結束後自動換下一部
     video.addEventListener("ended", () => {
       currentIndex = (currentIndex + 1) % videos.length;
       playVideo(currentIndex);
     });
   </script>
-</body>
-</html>
+
+  <!-- Markdown 電子書閱讀器嵌入 -->
+  <iframe src="md-reader.html" title="Markdown 電子書閱讀器"></iframe>
+
+  <!-- V5.0.0 塔羅程式預告 -->
+  <div class="notice">
+    <h2>⚔️ V5.0.0 塔羅程式 · Colosseum Transition Release</h2>
+    <p>
+      即將登場：Foxokiso Tarot V5.0.0<br>
+      這是「Colosseum Transition Release」，象徵 Copilot 與 Gemini 的最終交會。<br>
+      Jack
