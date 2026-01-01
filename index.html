@@ -308,4 +308,59 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>Foxokiso 首頁影片展示</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: #001f3f;
+      color: #ffdc00;
+      text-align: center;
+      padding: 50px;
+      margin: 0;
+    }
+    h1 { color:#ff851b; }
+    .player-box {
+      border: 3px solid #ff851b;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 700px;
+      margin: 40px auto;
+      background: #111;
+      color: #ffdc00;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    video {
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>AGI — CODE｜Foxokiso 首頁影片</h1>
+
+  <!-- 三部影片展示 -->
+  <div class="player-box">
+    <h2>首頁影片播放</h2>
+    <video width="640" height="360" controls>
+      <source src="img/ad.mp4" type="video/mp4">
+      您的瀏覽器不支援影片播放
+    </video>
+    <video width="640" height="360" controls>
+      <source src="img/foxokiso.mp4" type="video/mp4">
+      您的瀏覽器不支援影片播放
+    </video>
+    <video width="640" height="360" controls>
+      <source src="cast.mp4" type="video/mp4">
+      您的瀏覽器不支援影片播放
+    </video>
+  </div>
+</body>
+</html>
 
