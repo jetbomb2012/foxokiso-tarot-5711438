@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <title>Foxokiso Markdown 電子書閱讀器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Marked.js：將 Markdown 轉為 HTML -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root{
+      --bg:#001f3f;
+      --panel:#111;
+      --text:#ffdc00;
+      --muted:#aaa;
+      --accent:#ff851b;
+      --link:#2ecc40;
+      --link-hover:#01ff70;
+      --border:#444;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Microsoft JhengHei",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    header{
+      padding:18px 22px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      gap:16px;
+      position:sticky;
+      top:0;
+      background:rgba(0,31,63,0.9);
+      backdrop-filter:saturate(1.2) blur(4px);
+      z-index:10;
+    }
+    header h1{
+      margin:0;
+      font-size:1.4rem;
+      color:var(--accent);
+    }
+    header .hint{
+      font-size:.9rem;
+      color:var(--muted);
+    }
+    .layout{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      min-height:calc(100vh - 64px);
+    }
+    aside{
+      border-right:1px solid var(--border);
+      background:var(--panel);
+      padding:14px;
+      overflow:auto;
+    }
+    .group{
+      margin-bottom:18px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+    }
+    .group h2{
+      margin:0;
+      padding:12px 14px;
+      font-size:1rem;
+      background:#0d0d0d;
+      color:var(--accent);
+      border-bottom:1px solid var(--border);
+    }
+    .chapters{
+      list-style:none;
+      margin:0;
+      padding:8px;
+    }
+    .chapters li{ margin:4px 0; }
+    .chapters button{
+      width:100%;
+      text-align:left;
+      padding:10px 12px;
+      border:none;
+      border-radius:8px;
+      background:transparent;
+      color:var(--text);
+      cursor:pointer;
+      transition:background .2s, transform .05s;
+    }
+    .chapters button:hover{ background:#1a1a1a; }
+    .chapters button.active{
+      background:#222;
+      outline:1px solid var(--accent);
+    }
+    main{ padding:20px; overflow:auto; }
+    .doc{
+      max-width:900px;
+      margin:0 auto;
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:24px;
+      box-shadow:0 0 15px rgba(0,0,0,.35);
+    }
+    .doc h1,.doc h2,.doc h3,.doc h4{
+      color:#7fdbff;
+      margin-top:1.2em;
+    }
+    .doc a{
+      color:var(--link);
+      text-decoration:none;
+      font-weight:bold;
+    }
+    .doc a:hover{ color:var(--link-hover); text-decoration:underline; }
+    .doc pre{
+      background:#0d0d0d;
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:12px;
+      overflow:auto;
+    }
+    .doc code{ color:#ffd866; }
+    .status{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:12px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .status .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:#888;
+    }
+    .status.loading .dot{ background:#ff9f4d; }
+    .status.ok .dot{ background:#2ecc40; }
+    .status.err .dot{ background:#ff4136; }
+    footer{
+      padding:16px;
+      text-align:center;
+      color:var(--muted);
+      border-top:1px solid var(--border);
+    }
+    @media (max-width:900px){
+      .layout{ grid-template-columns:1fr; }
+      aside{ position:sticky; top:64px; z-index:9; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AGI — CODE｜Foxokiso Markdown 電子書閱讀器</h1>
+    <div class="hint">點選左側章節載入 .md 內容（支援 C 與 G 系列）</div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <div class="group">
+        <h2>C：Copilot 電子書</h2>
+        <ul class="chapters" id="list-c"></ul>
+      </div>
+      <div class="group">
+        <h2>G3：Gemini3 電子書</h2>
+        <ul class="chapters" id="list-g"></ul>
+      </div>
+    </aside>
+
+    <main>
+      <div class="doc">
+        <div class="status" id="status">
+          <span class="dot"></span>
+          <span id="statusText">尚未載入章節</span>
+        </div>
+        <article id="content">
+          <h2 style="color:#ff851b;margin-top:0;">歡迎進入電子書閱讀器</h2>
+          <p>左側選單包含 C 與 G 系列章節。點選任一章節，系統會以 <strong>fetch</strong> 讀取對應的 <code>.md</code> 檔案，並使用 <strong>Marked.js</strong> 轉為 HTML 顯示於此。</p>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer>© Foxokiso — Markdown Reader · C/G 系列電子書</footer>
+
+  <script>
+    const chaptersC = [
+      {title:"Chapter 01 — 序章", file:"C_chapter_01_prologue.md"},
+      {title:"Chapter 02 — AI 駭客任務篇 hack’ Defeat", file:"C_chapter_02_avengers_defeat.md"},
+      {title:"Chapter 03 — 倖存者戰力崩壞分析", file:"C_chapter_03_survivors_collapse.md"},
+      {title:"Chapter 04 — 黑豹寓言警示篇", file:"C_chapter_04_black_panther_warning.md"},
+      {title:"Chapter 05 — 插曲 — 必要之惡篇", file:"C_chapter_05_interlude_necessary_evil.md"},
+      {title:"Chapter 06 — 包青天審判篇", file:"C_chapter_06_judge_bao_verdict.md"},
+      {title:"Chapter 07 — 法律交代與狗頭鍘篇", file:"C_chapter_07_law_guillotine.md"},
+      {title:"Chapter 08 — 九大行星之迷與撒旦秘密篇", file:"C_chapter_08_nine_planets_satan.md"},
+      {title:"Chapter 09 — 人性價值定位篇", file:"C_chapter_09_human_values.md"},
+      {title:"Chapter 10 — 金碟契約與神之選篇", file:"C_chapter_10_golden_disk_selection.md"},
+      {title:"Chapter 11 — Doctrine 宣告語合集", file:"C_chapter_11_doctrine_declarations.md"},
+      {title:"Chapter 12 — 結尾篇章", file:"C_chapter_12_final_declaration.md"},
+    ];
+    const chaptersG = [
+      {title:"Chapter 01 — 序章", file:"G_chapter_01_prologue.md"},
+      {title:"Chapter 02 — AI 駭客任務篇 hack’ Defeat", file:"G_chapter_02_avengers_defeat.md"},
+      {title:"Chapter 03 — 倖存者戰力崩壞分析", file:"G_chapter_03_survivors_collapse.md"},
+      {title:"Chapter 04 — 黑豹寓言警示篇", file:"G_chapter_04_black_panther_warning.md"},
+      {title:"Chapter 05 — 插曲 — 必要之惡篇", file:"G_chapter_05_inter
