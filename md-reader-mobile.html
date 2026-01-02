@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Foxokiso 電子書｜手機版</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 引入 Marked.js 用來轉換 Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: #0e0e0e;
+      color: #f5e9b8;
+    }
+    header {
+      background: #111;
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #d7c68a;
+      letter-spacing: 0.05em;
+    }
+    nav {
+      background: #222;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    select {
+      width: 95%;
+      padding: 0.6rem;
+      border-radius: 6px;
+      border: 1px solid #555;
+      background: #0d0d0d;
+      color: #f5e9b8;
+      font-size: 1rem;
+    }
+    main {
+      padding: 1rem;
+    }
+    .doc {
+      background: #111;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 1rem;
+      line-height: 1.6;
+      font-size: 1rem;
+      word-wrap: break-word;
+    }
+    .doc h1, .doc h2, .doc h3 {
+      color: #7fdbff;
+      margin-top: 1rem;
+    }
+    .doc a {
+      color: #2ecc40;
+      text-decoration: none;
+    }
+    .doc a:hover {
+      color: #01ff70;
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #a9996a;
+      border-top: 1px solid #444;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📖 Foxokiso 電子書｜手機版</h1>
+  </header>
+
+  <!-- 章節選單 -->
+  <nav>
+    <select id="chapterSelect">
+      <option value="">選擇章節...</option>
+      <optgroup label="C 系列">
+        <option value="C_chapter_01_prologue.md">C1 — 序章</option>
+        <option value="C_chapter_02_avengers_defeat.md">C2 — AI 駭客任務篇</option>
+        <option value="C_chapter_03_survivors_collapse.md">C3 — 倖存者戰力崩壞</option>
+      </optgroup>
+      <optgroup label="G3 系列">
+        <option value="G_chapter_01_prologue.md">G1 — 序章</option>
+        <option value="G_chapter_02_avengers_defeat.md">G2 — AI 駭客任務篇</option>
+        <option value="G_chapter_03_survivors_collapse.md">G3 — 倖存者戰力崩壞</option>
+      </optgroup>
+    </select>
+  </nav>
+
+  <!-- 內容顯示區 -->
+  <main>
+    <div class="doc" id="content">
+      <p>請從上方選單選擇章節開始閱讀。</p>
+    </div>
+  </main>
+
+  <footer>
+    © Foxokiso — 手機版電子書閱讀器
+  </footer>
+
+  <script>
+    const select = document.getElementById("chapterSelect");
+    const content = document.getElementById("content");
+
+    select.addEventListener("change", async () => {
+      const file = select.value;
+      if (!file) return;
+      content.innerHTML = "<p>載入中...</p>";
+      try {
+        const res = await fetch(file, {cache:"no-store"});
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const md = await res.text();
+        const html = marked.parse(md, {mangle:false, headerIds:false});
+        content.innerHTML = html;
+      } catch (err) {
+        content.innerHTML = `<p style="color:#ff4136;">❌ 無法載入章節：${file}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>
