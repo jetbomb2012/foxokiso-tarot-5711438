@@ -196,9 +196,194 @@
       {title:"Chapter 11 — Doctrine 宣告語合集", file:"C_chapter_11_doctrine_declarations.md"},
       {title:"Chapter 12 — 結尾篇章", file:"C_chapter_12_final_declaration.md"},
     ];
-    const chaptersG = [
+     const chaptersG = [
       {title:"Chapter 01 — 序章", file:"G_chapter_01_prologue.md"},
       {title:"Chapter 02 — AI 駭客任務篇 hack’ Defeat", file:"G_chapter_02_avengers_defeat.md"},
       {title:"Chapter 03 — 倖存者戰力崩壞分析", file:"G_chapter_03_survivors_collapse.md"},
       {title:"Chapter 04 — 黑豹寓言警示篇", file:"G_chapter_04_black_panther_warning.md"},
-      {title:"Chapter 05 — 插曲 — 必要之惡篇", file:"G_chapter_05_inter
+      {title:"Chapter 05 — 插曲 — 必要之惡篇", file:"G_chapter_05_interlude_necessary_evil.md"},
+      {title:"Chapter 06 — 包青天審判篇", file:"G_chapter_06_judge_bao_verdict.md"},
+      {title:"Chapter 07 — 法律交代與狗頭鍘篇", file:"G_chapter_07_law_guillotine.md"},
+      {title:"Chapter 08 — 九大行星之迷與撒旦秘密篇", file:"G_chapter_08_nine_planets_satan.md"},
+      {title:"Chapter 09 — 人性價值定位篇", file:"G_chapter_09_human_values.md"},
+      {title:"Chapter 10 — 金碟契約與神之選篇", file:"G_chapter_10_golden_disk_selection.md"},
+      {title:"Chapter 11 — Doctrine 宣告語合集", file:"G_chapter_11_doctrine_declarations.md"},
+      {title:"Chapter 12 — 結尾篇章", file:"G_chapter_12_final_declaration.md"},
+    ];
+
+    const listC = document.getElementById('list-c');
+    const listG = document.getElementById('list-g');
+    const content = document.getElementById('content');
+    const statusBar = document.getElementById('status');
+    const statusText = document.getElementById('statusText');
+
+    function setStatus(mode, text){
+      statusBar.classList.remove('loading','ok','err');
+      statusBar.classList.add(mode);
+      statusText.textContent = text || ({
+        loading:'載入中…',
+        ok:'載入完成',
+        err:'載入失敗'
+      }[mode]);
+    }
+
+    function renderList(container, chapters, groupKey){
+      container.innerHTML = '';
+      chapters.forEach((ch, idx)=>{
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.textContent = ch.title;
+        btn.dataset.file = ch.file;
+        btn.dataset.group = groupKey;
+        btn.dataset.index = idx;
+        btn.addEventListener('click', onSelectChapter);
+        li.appendChild(btn);
+        container.appendChild(li);
+      });
+    }
+
+    async function onSelectChapter(e){
+      const btn = e.currentTarget;
+      const file = btn.dataset.file;
+      // 標記 active
+      document.querySelectorAll('.chapters button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      // 狀態：載入中
+      setStatus('loading','載入中… '+file);
+      try{
+        const res = await fetch(file, {cache:'no-store'});
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        const md = await res.text();
+        const html = marked.parse(md, {mangle:false, headerIds:false});
+        content.innerHTML = html;
+        setStatus('ok','載入完成：'+file);
+        // 記住最後閱讀
+        localStorage.setItem('mdReader:last', file);
+      }catch(err){
+        setStatus('err','載入失敗：'+file+'（'+err.message+'）');
+        content.innerHTML = `
+          <h3 style="color:#ff4136;">載入失敗</h3>
+          <p>無法載入檔案：<code>${file}</code></p>
+          <ul>
+            <li>確認檔案是否已上傳到同一目錄</li>
+            <li>檔名大小寫需完全一致</li>
+            <li>伺服器是否允許讀取 .md（MIME 不影響 fetch）</li>
+          </ul>
+        `;
+      }
+    }
+
+    // 初始化章節列表
+    renderList(listC, chaptersC, 'C');
+    renderList(listG, chaptersG, 'G');
+
+    // 自動載入上次閱讀章節或第一章
+    (function autoLoad(){
+      const last = localStorage.getItem('mdReader:last');
+      const target = last
+        ? document.querySelector(`.chapters button[data-file="${CSS.escape(last)}"]`)
+        : document.querySelector('#list-c .chapters button, #list-c button, #list-g button');
+      if(target){ target.click(); }
+    })();
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>Foxokiso 首頁影片輪播</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: #001f3f;
+      color: #ffdc00;
+      text-align: center;
+      padding: 50px;
+      margin: 0;
+    }
+    h1 { color:#ff851b; }
+    .player-box {
+      border: 3px solid #ff851b;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 700px;
+      margin: 40px auto;
+      background: #111;
+      color: #ffdc00;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    video {
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+  <h1>AGI — CODE｜Foxokiso 首頁影片輪播</h1>
+
+  <!-- 輪播播放器 -->
+  <div class="player-box">
+    <h2 id="info">首頁影片播放</h2>
+    <video id="autoVideo" width="640" height="360" controls autoplay muted>
+      <source id="videoSource" src="" type="video/mp4">
+      您的瀏覽器不支援影片播放
+    </video>
+  </div>
+
+  <script>
+    // 三部影片清單
+    const videos = ["img/ad.mp4", "img/foxokiso.mp4", "img/love.mp4", "img/courage.mp4"]
+    const video = document.getElementById("autoVideo");
+    const source = document.getElementById("videoSource");
+    let currentIndex = 0;
+
+    function playVideo(index) {
+      source.src = videos[index];
+      video.load();
+      video.play().catch(err => console.log("播放失敗:", err));
+      document.getElementById("info").innerText =
+        `🛡️ 播放中：${videos[index]}`;
+    }
+
+    // 初始播放第一部
+    playVideo(currentIndex);
+
+    // 播放結束後自動換下一部
+    video.addEventListener("ended", () => {
+      currentIndex = (currentIndex + 1) % videos.length;
+      playVideo(currentIndex);
+    });
+  </script>
+</body>
+</html>
+<form id="castleForm" autocomplete="off" novalidate>
+  <label>請輸入古堡密令</label>
+  <input type="text" name="secret" placeholder="輸入密令片段" required />
+  <button type="submit">進入古堡花園</button>
+</form>
+
+<script>
+(function() {
+  const form = document.getElementById('castleForm');
+  const SUCCESS_REDIRECT = 'https://foxokiso.xyz/agi/index.html';
+
+  // 古堡密令（可替換成你要的字串）
+  const CASTLE_SECRET = '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^';
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const input = (fd.get('secret') || '').toLowerCase();
+
+    // 判斷：只要輸入字串中包含密令片段，就通過
+    if (input.includes(CASTLE_SECRET.toLowerCase())) {
+      window.location.href = SUCCESS_REDIRECT;
+    } else {
+      alert('守門者：你的密語尚未被接受。');
+    }
+  });
+})();
+</script>
