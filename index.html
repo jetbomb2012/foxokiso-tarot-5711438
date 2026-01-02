@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>AGI_CODE 古堡花園入口 · 水晶球播放器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background:#0e0e0e;
+      color:#f5e9b8;
+      font-family:"Microsoft JhengHei",sans-serif;
+      text-align:center;
+      margin:0;
+      padding:2rem;
+    }
+    h1 { color:#d7c68a; letter-spacing:0.1em; }
+    .links { margin-top:2rem; }
+    a {
+      display:block;
+      margin:1rem auto;
+      padding:0.8rem 1.2rem;
+      max-width:18rem;
+      background:#f5e9b8;
+      color:#111;
+      text-decoration:none;
+      border-radius:6px;
+      font-weight:600;
+      letter-spacing:0.05em;
+      transition:background 0.25s;
+    }
+    a:hover { background:#d7c68a; }
+    footer {
+      margin-top:3rem;
+      font-size:0.8rem;
+      color:#a9996a;
+    }
+
+    /* 水晶球框樣式 */
+    .player-box {
+      width: 420px;
+      height: 420px;
+      border-radius: 50%; /* 圓形 */
+      margin: 40px auto;
+      background: radial-gradient(circle at center, #88f 30%, #000 100%);
+      box-shadow: 0 0 40px rgba(0, 200, 255, 0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 10px;
+    }
+    h2 {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #ffdc00;
+    }
+    video {
+      width: 95%;
+      height: 95%;
+      border-radius: 50%; /* 影片也裁成圓形 */
+      box-shadow: 0 0 20px rgba(255,255,255,0.5);
