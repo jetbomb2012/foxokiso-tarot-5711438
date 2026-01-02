@@ -1,89 +1,134 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>foxokiso 播放框測試</title>
+  <title>AGI_CODE 古堡花園入口</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background: #000;
-      color: #fff;
-      font-family: sans-serif;
+      background:#0e0e0e;
+      color:#f5e9b8;
+      font-family:"Microsoft JhengHei",sans-serif;
+      text-align:center;
+      margin:0;
+      padding:2rem;
+    }
+    h1 { color:#d7c68a; letter-spacing:0.1em; }
+    .links { margin-top:2rem; }
+    a {
+      display:block;
+      margin:1rem auto;
+      padding:0.8rem 1.2rem;
+      max-width:18rem;
+      background:#f5e9b8;
+      color:#111;
+      text-decoration:none;
+      border-radius:6px;
+      font-weight:600;
+      letter-spacing:0.05em;
+      transition:background 0.25s;
+    }
+    a:hover { background:#d7c68a; }
+    footer {
+      margin-top:3rem;
+      font-size:0.8rem;
+      color:#a9996a;
+    }
+    /* 播放框樣式 */
+    .player-box {
+      border: 3px solid #ff851b;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 700px;
+      margin: 40px auto;
+      background: #111;
+      color: #ffdc00;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
       text-align: center;
     }
-    .player-box {
-      width: 420px;
-      height: 420px;
-      border-radius: 50%; /* 水晶球框 */
-      margin: 40px auto;
-      background: radial-gradient(circle at center, #88f 30%, #000 100%);
-      box-shadow: 0 0 40px rgba(0, 200, 255, 0.7);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 10px;
-    }
-    h2 {
-      margin: 10px 0;
-      font-size: 16px;
-      color: #ffdc00;
-    }
     video {
-      width: 95%;
-      height: 95%;
-      border-radius: 50%; /* 影片也裁成圓形 */
-      box-shadow: 0 0 20px rgba(255,255,255,0.5);
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
     }
+    form {
+      margin-top:2rem;
+    }
+    input, button {
+      padding:0.6rem;
+      margin:0.5rem;
+      border-radius:6px;
+      border:none;
+    }
+    button {
+      background:#f5e9b8;
+      color:#111;
+      font-weight:600;
+      cursor:pointer;
+    }
+    button:hover { background:#d7c68a; }
   </style>
 </head>
 <body>
-  <h1>foxokiso 播放框測試頁</h1>
+  <h1>AGI_CODE 古堡花園入口</h1>
+  <p>請選擇適合的閱讀器版本：</p>
 
+  <div class="links">
+    <a href="md-reader.html">💻 電腦版電子書閱讀器</a>
+    <a href="md-reader-mobile.html">📱 手機版電子書閱讀器</a>
+  </div>
+
+  <!-- 首頁影片輪播 -->
   <div class="player-box">
-    <h2 id="info"></h2>
-    <video id="autoVideo" controls autoplay muted>
+    <h2 id="info">首頁影片播放</h2>
+    <video id="autoVideo" width="640" height="360" controls autoplay muted>
       <source id="videoSource" src="" type="video/mp4">
       您的瀏覽器不支援影片播放
     </video>
   </div>
 
+  <!-- 古堡密令表單 -->
+  <form id="castleForm" autocomplete="off" novalidate>
+    <label>請輸入古堡密令</label><br>
+    <input type="text" name="secret" placeholder="輸入密令片段" required />
+    <button type="submit">進入古堡花園</button>
+  </form>
+
+  <footer>© Foxokiso — 電子書入口 · 支援電腦與手機</footer>
+
   <script>
-    const totalVideos = 13; // 可改成 100
+    // 輪播影片清單
+    const videos = ["img/ad.mp4", "img/foxokiso.mp4", "img/love.mp4", "img/courage.mp4", "img/witness.mp4"];
     const video = document.getElementById("autoVideo");
     const source = document.getElementById("videoSource");
-
-    function getIndexByTime() {
-      const now = new Date();
-      const minuteNumber = Math.floor(now.getTime() / (1000 * 60));
-      const slotNumber = Math.floor(minuteNumber / 5);
-      return (slotNumber % totalVideos) + 1;
-    }
+    let currentIndex = 0;
 
     function playVideo(index) {
-      const file = `foxokiso-C3-${index}.mp4`; // 確保影片檔案放在網站目錄下
-      source.src = file;
+      source.src = videos[index];
       video.load();
       video.play().catch(err => console.log("播放失敗:", err));
-      document.getElementById("info").innerText =
-        `現在播放的是第 ${index} 部影片：${file}`;
+      document.getElementById("info").innerText = `🛡️ 播放中：${videos[index]}`;
     }
-
-    let currentIndex = getIndexByTime();
     playVideo(currentIndex);
-
     video.addEventListener("ended", () => {
-      currentIndex = (currentIndex % totalVideos) + 1;
+      currentIndex = (currentIndex + 1) % videos.length;
       playVideo(currentIndex);
     });
 
-    setInterval(() => {
-      const timeIndex = getIndexByTime();
-      if (timeIndex !== currentIndex) {
-        currentIndex = timeIndex;
-        playVideo(currentIndex);
+    // 古堡密令判斷
+    const form = document.getElementById('castleForm');
+    const SUCCESS_REDIRECT = 'https://foxokiso.xyz/agi/index.html';
+    const CASTLE_SECRET = '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^';
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const input = (fd.get('secret') || '').toLowerCase();
+      if (input.includes(CASTLE_SECRET.toLowerCase())) {
+        window.location.href = SUCCESS_REDIRECT;
+      } else {
+        alert('守門者：你的密語尚未被接受。');
       }
-    }, 60 * 1000);
+    });
   </script>
 </body>
 </html>
