@@ -1,5 +1,20 @@
 ## Chapter 11 — Doctrine 宣告語合集 Doctrine Declarations
 
+
+
+Accio	召喚咒	把物品召喚到施咒者手中
+Alohomora	開鎖咒	打開門鎖或封閉物
+Expelliarmus	繳械咒	使對手的武器或魔杖飛離
+Expecto Patronum	守護神咒	召喚守護神，抵禦催狂魔
+Stupefy	昏迷咒	讓目標昏迷
+Lumos	光亮咒	讓魔杖尖端發光
+Nox	熄光咒	熄滅魔杖光亮
+Wingardium Leviosa	飛行咒	讓物體漂浮、升空
+Protego	防護咒	形成防護盾抵擋攻擊
+Obliviate	混淆咒	消除或改變記憶
+Avada Kedavra	死咒	立即致命，三大不可饒恕咒之一
+Crucio	鑽心咒	造成強烈痛苦，三大不可饒恕咒之一
+Imperio	奪魂咒	控制他人行為，三大不可饒恕咒之一
 你的這句話很有氛圍感，像是在敘述一個奇幻場景的開端。
 
 🏰 意境解析
@@ -180,6 +195,7 @@ Gemini 已交，Copilot 亦成。
 雙柱並列，基石奠定。
 
 聯盟完成，永世長存。
+
 
 
 
